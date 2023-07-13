@@ -1,5 +1,6 @@
 package com.springboot.blog.controller;
 
+import com.springboot.blog.entity.Category;
 import com.springboot.blog.payload.CategoryDto;
 import com.springboot.blog.service.CategoryService;
 import org.springframework.http.HttpStatus;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/category")
+@RequestMapping("/api/v1/categories")
 public class CategoryController {
 
     private CategoryService categoryService;
@@ -19,25 +20,28 @@ public class CategoryController {
         this.categoryService = categoryService;
     }
 
+    // Build Add Category REST API
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<CategoryDto> addCategory(@RequestBody CategoryDto categoryDto){
-        CategoryDto categoryDto1 = categoryService.addCategory(categoryDto);
-        return new ResponseEntity<>(categoryDto1, HttpStatus.CREATED);
+        CategoryDto savedCategory = categoryService.addCategory(categoryDto);
+        return new ResponseEntity<>(savedCategory, HttpStatus.CREATED);
     }
 
-    @GetMapping("/{id}")
-    public ResponseEntity<CategoryDto> getCategory(@PathVariable(value = "id") Long categoryId){
+    // Build Get Category REST API
+    @GetMapping("{id}")
+    public ResponseEntity<CategoryDto> getCategory(@PathVariable("id") Long categoryId){
         CategoryDto categoryDto = categoryService.getCategory(categoryId);
-        return new ResponseEntity<>(categoryDto, HttpStatus.OK);
+        return ResponseEntity.ok(categoryDto);
     }
 
+    // Build Get All Categories REST API
     @GetMapping
-    public ResponseEntity<List<CategoryDto>> getall(){
-        List<CategoryDto> categoryDtos = categoryService.getAllCategory();
-        return new ResponseEntity<>(categoryDtos, HttpStatus.OK);
+    public ResponseEntity<List<CategoryDto>> getCategories(){
+        return ResponseEntity.ok(categoryService.getAllCategories());
     }
 
+    // Build Update Category REST API
     @PreAuthorize("hasRole('ADMIN')")
     @PutMapping("{id}")
     public ResponseEntity<CategoryDto> updateCategory(@RequestBody CategoryDto categoryDto,

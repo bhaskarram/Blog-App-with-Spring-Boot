@@ -1,10 +1,12 @@
 package com.springboot.blog.payload;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Setter
 @Getter
-@ToString
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class CategoryDto {

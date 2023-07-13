@@ -3,18 +3,18 @@ package com.springboot.blog.payload;
 import java.util.Date;
 
 public class ErrorDetails {
-    private Date timeStamp;
+    private Date timestamp;
     private String message;
     private String details;
 
-    public ErrorDetails(Date timeStamp, String message, String details) {
-        this.timeStamp = timeStamp;
+    public ErrorDetails(Date timestamp, String message, String details) {
+        this.timestamp = timestamp;
         this.message = message;
         this.details = details;
     }
 
-    public Date getTimeStamp() {
-        return timeStamp;
+    public Date getTimestamp() {
+        return timestamp;
     }
 
     public String getMessage() {

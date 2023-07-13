@@ -2,7 +2,6 @@ package com.springboot.blog.security;
 
 import com.springboot.blog.entity.User;
 import com.springboot.blog.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,12 +13,11 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
-public class CustomerUserDetailsService implements UserDetailsService {
+public class CustomUserDetailsService implements UserDetailsService {
 
     private UserRepository userRepository;
 
-    @Autowired
-    public CustomerUserDetailsService(UserRepository userRepository) {
+    public CustomUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
 
