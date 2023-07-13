@@ -1,13 +1,17 @@
 package com.springboot.blog.payload;
 
 import com.springboot.blog.entity.Comment;
-import lombok.Data;
+import lombok.*;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.util.Set;
 
-@Data
+@Setter
+@Getter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class PostDto {
     private Long id;
     @NotEmpty
@@ -21,4 +25,6 @@ public class PostDto {
     @NotEmpty
     private String content;
     private Set<CommentDto> comments;
+
+    private Long categoryId;
 }

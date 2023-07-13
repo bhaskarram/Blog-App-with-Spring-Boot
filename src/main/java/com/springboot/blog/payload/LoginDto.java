@@ -1,9 +1,10 @@
-package com.springboot.blog.entity;
+package com.springboot.blog.payload;
 
 import lombok.*;
 
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoginDto {

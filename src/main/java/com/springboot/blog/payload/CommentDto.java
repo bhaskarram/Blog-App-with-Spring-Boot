@@ -1,12 +1,16 @@
 package com.springboot.blog.payload;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 
-@Data
+@Setter
+@Getter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class CommentDto {
     private Long id;
     @NotEmpty(message = "Name should not be null or empty")
